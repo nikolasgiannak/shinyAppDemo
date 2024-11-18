@@ -8,6 +8,7 @@
 #
 
 library(shiny)
+library(ggplot2)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -43,7 +44,7 @@ server <- function(input, output) {
     bins <- seq(min(x), max(x), length.out = input$bins + 1)
     
     # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white',
+    hist(x, breaks = bins, col = 'lightblue', border ="grey",
          xlab = 'Waiting time to next eruption (in mins)',
          main = 'Histogram of waiting times')
   })
