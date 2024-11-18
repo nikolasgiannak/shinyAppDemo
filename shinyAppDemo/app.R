@@ -14,11 +14,12 @@ ui <- fluidPage(
   
   # Application title
   titlePanel("My first Shiny App"),
-  
+  p("Here I explain how the sideBar panel works"),
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
+ 
     sidebarPanel(
-      p("Here I explain how the sideBar panel works"),
+     
       sliderInput("bins",
                   "Choose the appropriate number of bins to visualize your data:",
                   min = 10,
