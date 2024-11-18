@@ -21,9 +21,9 @@ ui <- fluidPage(
       p("Here I explain how the sideBar panel works"),
       sliderInput("bins",
                   "Choose the appropriate number of bins to visualize your data:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
+                  min = 10,
+                  max = 40,
+                  value = 20)
     ),
     
     # Show a plot of the generated distribution
