@@ -11,39 +11,49 @@ library(shiny)
 library(ggplot2)
 
 # Define UI for application that draws a histogram
-ui <- fluidPage(titlePanel("Basic Demo"),
-                splitLayout(
-                  h2("My favourite things"),
-                  tags$ul(tags$li("Coding"),
-                          tags$li("Cycling"),
-                          tags$li("Cooking")),
-                  p("This is a very basic demo."),
-                  tags$img(
-                    src = "https://debruine.github.io/shinyintro/images/logos/shinyintro.png",
-                    width = "100px",
-                    height = "100px"
-                  )
-                ))
+
+-------------#####################################################--------------
+#ui <- fluidPage(
+#  checkboxGroupInput("icons", "Choose icons:",
+#                     choiceNames =
+#                       list(icon("calendar"), icon("bed"),
+#                            icon("cog"), icon("bug")),
+#                    choiceValues =
+#                      list("calendar", "bed", "cog", "bug")
+#  ),
+#  textOutput("txt")
+#)
+
+-----------#######################################################--------------
+
+
+ui <- fluidPage(titlePanel("Learning buy doing Demos"),
+                sidebarLayout(
+                  sidebarPanel(
+checkboxGroupInput(
+  inputId = "fav_things",
+  label = "What are your favourite things?",
+  choices = c("Coding", "Cycling", "Cooking")
+                  ),
+actionButton(
+  inputId = "count_fav_things",
+  label = "Count",
+  icon = icon("calculator")
+            )
+                              
+                              ),
+#mainPanel should be inside the sidebarLayout but outside SidebarPanel
+mainPanel(textOutput(outputId = "n_fav_things"))
+                              )
+)
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-  
-  output$distPlot <- renderPlot({# set x-axis label depending on the value of display_var
-    if (input$display_var == "eruptions") {
-      xlabel <- "Eruption Time (in minutes)"
-    } else if (input$display_var == "waiting") {
-      xlabel <- "Waiting Time to Next Eruption (in minutes)"
-    }
-    # create plot
-    ggplot(faithful, aes(.data[[input$display_var]])) +
-      geom_histogram(bins = input$bins,
-                     fill = "#0066CC",
-                     colour = "grey90") +
-      xlab("xlabel") +
-      theme_minimal()
+  # count favourite things
+  observeEvent(input$count_fav_things, {
+    n <- length(input$fav_things)
+    count_text <- sprintf("You have %d favourite things", n)
   })
-  
-  
-  }
+}
 
 # Run the application 
 shinyApp(ui = ui, server = server)
