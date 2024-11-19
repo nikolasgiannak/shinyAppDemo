@@ -12,7 +12,7 @@ library(ggplot2)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(titlePanel("Basic Demo"),
-                flowLayout(
+                splitLayout(
                   h2("My favourite things"),
                   tags$ul(tags$li("Coding"),
                           tags$li("Cycling"),
