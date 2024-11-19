@@ -12,18 +12,20 @@ library(ggplot2)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(titlePanel("Basic Demo"),
-                flowLayout(
+                sidebarLayout(sidebarPanel(
                   h2("My favourite things"),
                   tags$ul(tags$li("Coding"),
                           tags$li("Cycling"),
-                          tags$li("Cooking")),
+                          tags$li("Cooking"))
+                ),
+                mainPanel(
                   p("This is a very basic demo."),
                   tags$img(
                     src = "https://debruine.github.io/shinyintro/images/logos/shinyintro.png",
                     width = "100px",
                     height = "100px"
                   )
-                ))
+                )))
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   
