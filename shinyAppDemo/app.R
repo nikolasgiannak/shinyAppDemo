@@ -64,7 +64,11 @@ server <- function(input, output){
   
 }
 
-# 3rd option to do the same thing
+# 3rd option to do the same thing by using reactive() to create a new function called count_text, which updates 
+# the value when the input for the reactive function changes
+
+# Here isolate is used to prevent count_text() from changing when a user clicks the checkboxes
+
 
 
 
