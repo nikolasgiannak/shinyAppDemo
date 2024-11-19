@@ -42,7 +42,7 @@ server <- function(input, output) {
     # create plot
     ggplot(faithful, aes(eruptions)) +
       geom_histogram(bins = input$bins,
-                     fill = "lightblue",
+                     fill = "#0066CC",
                      colour = "grey90") +
       xlab("What are we even plotting here?") +
       theme_minimal()
