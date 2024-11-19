@@ -11,43 +11,39 @@ library(shiny)
 library(ggplot2)
 
 # Define UI for application that draws a histogram
-ui <- fluidPage(
-  
-  # Application title
-  titlePanel("My first Shiny App"),
-  p("Here I explain how the sideBar panel works"),
-  # Sidebar with a slider input for number of bins 
-  sidebarLayout(
- 
-    sidebarPanel(
-     
-      sliderInput("bins",
-                  "Choose the appropriate number of bins to visualize your data:",
-                  min = 10,
-                  max = 40,
-                  value = 20)
-    ),
-    
-    # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("distPlot")
-    )
-  )
-)
-
+ui <- fluidPage(titlePanel("Basic Demo"),
+                flowLayout(
+                  h2("My favourite things"),
+                  tags$ul(tags$li("Coding"),
+                          tags$li("Cycling"),
+                          tags$li("Cooking")),
+                  p("This is a very basic demo."),
+                  tags$img(
+                    src = "https://debruine.github.io/shinyintro/images/logos/shinyintro.png",
+                    width = "100px",
+                    height = "100px"
+                  )
+                ))
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   
-  output$distPlot <- renderPlot({
+  output$distPlot <- renderPlot({# set x-axis label depending on the value of display_var
+    if (input$display_var == "eruptions") {
+      xlabel <- "Eruption Time (in minutes)"
+    } else if (input$display_var == "waiting") {
+      xlabel <- "Waiting Time to Next Eruption (in minutes)"
+    }
     # create plot
-    ggplot(faithful, aes(eruptions)) +
+    ggplot(faithful, aes(.data[[input$display_var]])) +
       geom_histogram(bins = input$bins,
                      fill = "#0066CC",
                      colour = "grey90") +
-      xlab("What are we even plotting here?") +
+      xlab("xlabel") +
       theme_minimal()
   })
-}
+  
+  
+  }
 
 # Run the application 
 shinyApp(ui = ui, server = server)
