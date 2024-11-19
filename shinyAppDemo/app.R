@@ -35,22 +35,40 @@ ui <- fluidPage(titlePanel("Basic Demo"),
                       choices = c("Coding", "Cycling", "Cooking", "another choice", "choice...again")
                     ),
                     actionButton(
-                      inputId = "count_fav_things",
+                      inputId = "count_favourite_things",
                       label = "Count",
                       icon = icon("calculator")
                     )
                   ),
                   mainPanel(textOutput(outputId = "n_fav_things"))
                 ))
-# Define server logic required to draw count choices
-server <- function(input, output) {
-  # count favourite things
-  observeEvent(input$count_fav_things, {
-    n <- length(input$fav_things)
-    count_text <- sprintf("You have %d favourite things", n)
-    output$n_fav_things <- renderText(count_text)
+# Define server logic required to draw count choices through observeEvent() reactive function and counting the length
+#server <- function(input, output) {
+#  # count favourite things
+#  observeEvent(input$count_fav_things, {
+#    n <- length(input$fav_things)
+#    count_text <- sprintf("You have %d favourite things", n)
+#    output$n_fav_things <- renderText(count_text)
+#  })
+#}
+
+# 2nd version using a render fuction paired with an outpiut function
+server <- function(input, output){
+  #count the choices/favourite things through renderText function
+  observeEvent(input$count_favourite_things,#create a new column at input named count_things
+               {
+                 n = length(input$fav_things)
+                 countText = sprintf("You have %d fav things", n)
+    output$n_fav_things = renderText(countText)
   })
+  
 }
+
+# 3rd option to do the same thing
+
+
+
+
 
 # Run the application 
 shinyApp(ui = ui, server = server)
