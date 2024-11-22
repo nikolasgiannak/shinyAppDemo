@@ -34,8 +34,14 @@ ui <- dashboardPage(
             id = "tabs",
             menuItem("Tab Title", tabName = "demo_tab", icon = icon(random_icon))
         ),
+        div(
         tags$a(href = "https://debruine.github.io/shinyintro/", 
-               "ShinyIntro book", style="padding: 1em;")
+               "ShinyIntro book", style="padding: 1em; display: block;"), 
+        tags$a(href = "https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-023-05420-y", 
+                                                                 "Rogue App", style="padding: 1em; display:block;"),
+        tags$a(href = "https://www.nature.com/articles/s41586-024-08165-7#Abs1", "Adipose tissue and epigenetic memory of obesity after weig
+                          ht loss", style = "padding: 2em; display:block;")
+        )
     ),
     dashboardBody(
         shinyjs::useShinyjs(),
