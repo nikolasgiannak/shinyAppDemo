@@ -54,13 +54,13 @@ ui <- dashboardPage(
         tabItems(
           tabItem(
             tabName = "demo_tab",
-            textInput("given", "Given Name"),
-            textInput("surname", "Surname"),
-            selectInput("pet", "What is your favourite pet?",
-                        c("cats", "dogs", "ferrets")),
-            textAreaInput("bio", NULL,
+            box(textInput("given", "Given Name"),
+            textInput("surname", "Surname")),
+           box(selectInput("pet", "What is your favourite pet?",
+                        c("cats", "dogs", "ferrets"))),
+            box(textAreaInput("bio", NULL,
                           height = "100px",
-                          placeholder = "brief bio")
+                          placeholder = "brief bio"))
           )
         )
     )
