@@ -26,7 +26,7 @@ random_icon <- sample(c("canadian-maple-leaf", "dragon", "user", "cog",
 ui <- dashboardPage(
     skin = "red",
     dashboardHeader(title = "Basic Template", 
-        titleWidth = "calc(100% - 44px)" # puts sidebar toggle on right
+        titleWidth = "250px" # puts sidebar toggle on the left, in addition to put it right it is titleWidth = "calc(100% - 44px)"
     ),
     dashboardSidebar(
         # https://fontawesome.com/icons?d=gallery&m=free
