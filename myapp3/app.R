@@ -53,8 +53,14 @@ ui <- dashboardPage(
         ),
         tabItems(
           tabItem(
-            tabName = "demo_tab",
-            box(title ="Provide your name", collapsible = TRUE, width = 6, height = 200, textInput("given", "Given Name"),
+            tabName = "demo_tab", 
+            fluidRow(
+              infoBox("Nikolas Giannakis, 2024", tags$a(href = "https://github.com/nikolasgiannak", "My GitHub",
+                                                        icon = icon("github"),
+                                                        color = "success")),
+            valueBox("Default ValueBox", "With subtitle"),
+            valueBox("No subtitle", ""),
+            box(title ="Provide your name", collapsible = TRUE, solidHeader = TRUE, status = "info", width = 6, height = 200, textInput("given", "Given Name"),
             textInput("surname", "Surname")),
            box(selectInput("pet", "WHO is your favourite?",
                         c("me", "him", "her"))),
@@ -63,9 +69,11 @@ ui <- dashboardPage(
                 textAreaInput("bio", NULL,
                           height = "100px",
                           placeholder = "brief bio"))
+           
           )
         )
     )
+  )
 )
 
 
