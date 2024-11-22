@@ -52,7 +52,16 @@ ui <- dashboardPage(
             tags$script(src = "custom.js")
         ),
         tabItems(
-            demo_tab
+          tabItem(
+            tabName = "demo_tab",
+            textInput("given", "Given Name"),
+            textInput("surname", "Surname"),
+            selectInput("pet", "What is your favourite pet?",
+                        c("cats", "dogs", "ferrets")),
+            textAreaInput("bio", NULL,
+                          height = "100px",
+                          placeholder = "brief bio")
+          )
         )
     )
 )
