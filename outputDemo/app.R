@@ -36,7 +36,7 @@ main_tab <- tabItem(
 
 ## UI ----
 ui <- dashboardPage(
-  skin = "purple",
+  skin = "red",
   dashboardHeader(title = "Output Demo"),
   dashboardSidebar(disable = TRUE),
   dashboardBody(
