@@ -9,7 +9,21 @@ suppressPackageStartupMessages({
 # user interface ----
 
 
+favourite_animals <- list(
+  "Dogs" = "d",
+  "Cats" = "c",
+  "Birds" = "b",
+  "Fish" = "f",
+  "Mice" = "m",
+  "Hedgehogs" = "h",
+  "Snakes" = "s"
+  )
 
+demo_cbgi <-
+  checkboxGroupInput("demo_cbgi",
+                     label = "Select your favourite animals (select all that apply)",
+                     choices = favourite_animals)
+                     
 slider <- sliderInput("slider",
                            label = "Rating",
                            min = 1,
@@ -36,9 +50,9 @@ main_tab <- tabItem(
   p("Exercise with pets."),
   fluidRow(
     column(width = 6,
-           radio_animals),
+           radio_animals, slider),
     column(width = 6,
-           slider,
+           demo_cbgi,
            demo_file)
   ),
   actionButton("reset", "Reset")
@@ -62,10 +76,11 @@ ui <- dashboardPage(
 server <- function(input, output, session) {
   # reset values
   observeEvent(input$reset, {
+    updateCheckboxGroupInput(session, "demo_cbgi", selected = character(0))
     updateCheckboxInput(session, "demo_cb", value = TRUE)
     updateRadioButtons(session, "demo_radio", selected = character(0))
     updateSliderInput(session, "slider", value = 0)
   })
 } 
-
+demo_cbgi
 shinyApp(ui, server)
