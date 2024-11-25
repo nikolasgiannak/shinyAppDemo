@@ -1,1 +1,3 @@
-shinyintro::clone("output_demo")
+
+
+shinyintro::clone("output_demo", "myApp")
