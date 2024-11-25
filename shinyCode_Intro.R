@@ -12,7 +12,8 @@ shinyintro::book()
 
 shinyintro::app("first_demo")
 
-
+#INstall test application shinytest2, as shinytest did not have 0 exit status
+devtools::install_github("rstudio/shinytest2")
 #
 # This is a Shiny web application. You can run the application by clicking
 # the 'Run App' button above.
@@ -24,8 +25,7 @@ shinyintro::app("first_demo")
 
 library(shiny)
 
-# Define UI for application that draws a histogram
-ui <- fluidPage(
+
 
 
 # Run the application 
