@@ -56,8 +56,8 @@ server <- function(input, output, session) {
     if (is.null(input$y)) return(ggplot())
     
     ggplot(iris, aes(x = Species, y = .data[[input$y]], color = Species)) +
-      geom_violin(show.legend = FALSE) +
-      stat_summary(fun.data = mean_cl_normal, show.legend = FALSE) +
+      geom_violin(show.legend = TRUE) +
+      stat_summary(fun.data = mean_cl_normal, show.legend = TRUE) +
       ylab(input$y)
   })
   
