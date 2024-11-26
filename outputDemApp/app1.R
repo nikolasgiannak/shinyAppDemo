@@ -16,20 +16,20 @@ main_tab <- tabItem(
   tabName = "main_tab",
   uiOutput("demo_ui"),
   tabsetPanel(
-    tabPanel("plotOutput",
+    tabPanel("Visualization",
              textOutput("demo_text", container = tags$h3),
              plotOutput("demo_plot")),
-    tabPanel("verbatimText",
+    tabPanel("Code",
              p("Code for this plot"),
              verbatimTextOutput("demo_verbatim")),
-    tabPanel("imageOutput", 
+    tabPanel("Imagestats", 
              sliderInput("img_width", "Saved image width in pixels", 500, 2500, 
                          value = 1500, step = 50),
              p("The image is displayed at 100% screen width"),
              imageOutput("demo_image")),
-    tabPanel("tableOutput",
+    tabPanel("Table",
              tableOutput("demo_table")),
-    tabPanel("dataTableOutput",
+    tabPanel("Data Table",
              DT::dataTableOutput("demo_datatable"))
   )
 )
